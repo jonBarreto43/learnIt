@@ -1,0 +1,379 @@
+"""
+Exam Structure
+
+subjectExam = [["", "", "", "", "", ""],   # Question 1
+               ["", "", "", "", "", ""],   # Question 2
+               ["", "", "", "", "", ""],   # Question 3
+               ["", "", "", "", "", ""],   # Question 4
+               ["", "", "", "", "", ""],   # Question 5
+               ["", "", "", "", "", ""],   # Question 6
+               ["", "", "", "", "", ""],   # Question 7
+               ["", "", "", "", "", ""],   # Question 8
+               ["", "", "", "", "", ""],   # Question 9
+               ["", "", "", "", "", ""]]   # Question 10
+"""
+
+## LearnIt
+## GUI prototype
+## This program should generate exams based on the user's choices
+## Offers Questions In Multiple Subjects
+
+# Import packages needed
+import random
+from tkinter import *
+
+
+##EXAM
+## Storing the Exam questions
+## Format = ["Question", "A", "B", "C", "D", "Answer"] ###########################################################################################
+
+mathExam = [["1+4","5","3","6","2","1"],  # Question 1
+        ["2*3","5","3","6","2","3"],  # Question 2
+        ["45/3","45","3","2","15","4"], # Question 3
+        ["70+2-70","4","2","-2","70","2"],   # Question 4
+        ["2*30-4","64","56","72","3","2"],  # Question 5
+        ["6+2+2-10","0","10","-10","4","1"],  # Question 6
+        ["2^5","8","16","32","64","3"],  # Question 7
+        ["2^6-10","64","2","24","54","4"], # Questioin 8
+        ["(100-1)*2","99", "198", "98", "200", "2"], # Question 9
+        ["1*1","1","2","3","4","1"]] # Question 10
+
+sciExam = [["Which is not a major kingdom of taxonomy?", "Anamalia", "Protozoa", "Eukaryota", "Fungi", "3"],   # Question 1
+           ["What type of rocks are made by eroded pieces carried around by things like wind or rivers?", "Igneous", "Sedimentary", "Metamorphic", "Granite", "2"],   # Question 2
+           ["What is the Density Formula?", "D = m/v", "D = v/m", "D = v+m", "D = m*v", "1"],   # Question 3
+           ["What is an example of a Mammal?", "Shark", "Frog", "Hawk", "Whale", "4"],   # Question 4
+           ["Which of these are a muscle that is in the shoulder?", "Quadriceps", "Deltoid", "Temporalis", "Latissimus Dorsi", "2"],   # Question 5
+           ["How long is the suns Diameter?", "865,000 miles", "865,000 inches", "13 miles", "72,083 Feet", "1"],   # Question 6
+           ["What is the Chemical compound for water", "W2R", "O", "H2O", "HO2", "3"],   # Question 7
+           ["According to research, people believe there was once a single Continent the eventually broke apart, what was it called?", "Pancea", "Potgea", "Plantgea", "Pangea", "4"],   # Question 8
+           ["What is the planet with the most water?", "Earth", "Venus", "Neptune", "Mars", "1"],   # Question 9
+           ["What is the study of all living things", "Chemistry", "Geology", "Biology", "Astronomy", "3"]]   # Question 10
+
+compSciExam = [["What is an example of a Boolean value?", "35", "hello world", "True", "negative", "3"],   # Question 1
+               ["What is this binary value in decimal: 1010", "2", "20", "4", "10", "4"],   # Question 2
+               ["Which is not an attribute of a good software", "Functional", "Expensive", "Easy to Use", "Effecient", "2"],   # Question 3
+               ["What is the first step in the Software development life cycle?", "Define the Problem", "Gather requirments", "Design the solution", "Anaylze using system models","1"],   # Question 4
+               ["An example of intangible cost when creating a software is", "hardware", "labor", "stress", "training", "3"],   # Question 5
+               ["What is the Bootstrap program?", "A simple program that calulates mathematical arithmetic", "An articifial intelligence program that controls robots", "A program that generates pictures of boots", "The program that loads at power-up or reboot", "4"],   # Question 6
+               ["Who created the Shortest Path First Algorithm?", "Albert Einstien", "Edsger W. Dijkstra", "Bellman-Ford", "Google", "2"],   # Question 7
+               ["Which is an Open-Source Operating System", "Linux-Ubuntu", "Windows XP", "Mac OS", "Windows 10", "1"],   # Question 8
+               ["Which variable has a SYNTAX error", "syntaxError", "syntax Error", "synerr", "SYNTAXERROR", "2"],   # Question 9
+               ["What can run on an Operating System", "Computer", "Cell-Phone", "Microwave", "All of the Above", "4"]]   # Question 10
+
+officeExam = [["What Season did Michael Scott and Jan Levinson break up?", "Season 1", " Season 4", " Season 8", " Season 6", "2"],   # Question 1
+               ["Who does Toby have a crush on?", "Pam", "Erin", "Angela", "Phylis", "1"],   # Question 2
+               ["Which Actor was not Regional Manager of DunderMifflin Scranton", "Steve Carrel", "Will Ferril", "James Spader", "Ed Helm", "3"],   # Question 3
+               ["In the first episode who's first day at the office was it?", "Jim", "Pam", "Kelly", "Ryan", "4"],   # Question 4
+               ["Who is the employee with the most seniority?", "Creed", "Phylis", "Stanley", "Meredith", "1"],   # Question 5
+               ["Which wasn't an office hookup?", "Meredith and Packer", "Bruce from Hammerhill and Meredith", "Kelly and Deryl", "Oscar and Micheal", "1"],   # Question 6
+               ["What wasn't a name of Angela's Cats?", "Bandit", "Sprinles", "Antonio", "Princess", "3"],   # Question 7
+               ["Who has the last line in the show?", "Dwight", "Pam", "Jim", "Meredith", "2"],   # Question 8
+               ["Where did Michael Scott move to with Holly?", "Scranton, Pennsylvania", "Nashua, New York", "New York, New York", "Boulder, Colorado", "4"],   # Question 9
+               ["What comedian did Michael scott imitate on Diversity Day?", "Bob Hope", "Chris Rock", "Dave Chapelle", "Aziz Ansari", "2"]]   # Question 10
+
+historyExam = [["What Holiday was created because plymouth colonists and native americans sharing autumn harvest feast?", "Independence Day", "Christmas", "Easter", "Thanksgiving", "4"],   # Question 1
+               ["Who was the 16th president of the United States?", "George Washington", "Abraham Lincoln", "Barak Obama", "Bill Clinton", "2"],   # Question 2
+               ["Who discovered Electricity?", "Benjamin Franklin", "Thomas Jefferson", "Edsger W. Dijkstra", "Albert Einstein", "1"],   # Question 3
+               ["What country wasn't involved with world war 2?", "Japan", "Germany", "Mexico", "Brazil", "3"],   # Question 4
+               ["What is the Native Language of Australia", "English", "French", "German", "Spanish", "1"],   # Question 5
+               ["What continent is the country Afghanistan in?", "South America", "Europe", "Asia", "Antarctica", "3"],   # Question 6
+               ["What is the tallest mountain in the world?", "Fuji", "Space", "Kilimanjaro", "Mount Everest", "4"],   # Question 7
+               ["What year was the declaration of Independence signed?", "1492", "1776", "1812", "2019", "2"],   # Question 8
+               ["Who did United States fight in the war of 1812?", "Canada", "England", "Mexico", "Japan", "1"],   # Question 9
+               ["What country sold the United States the State of Florida?", "France", "Brazil", "Mexico", "Spain", "4"]]   # Question 10
+
+sportsExam = [["Which of these cities is well known for holding an automobile race every year around Memorial Day?", "Los Angeles", "Miami", "Indianapolis", "Cleveland", "3"],   # Question 1
+               ["Which of these horses did NOT win the Triple Crown?", "Citation", "Secretariat", "Man o' War", "Affirmed", "3"],   # Question 2
+               ["Which player holds the record for the most consecutive games with a hit?", "Derek Jeter", "Joe DiMaggio", "Pete Rose", "Ty Cobb", "2"],   # Question 3
+               ["Which boxer holds the record for the longest reign as World Heavyweight Champion?", "Rocky Marciano", "Joe Louis", "Jack Dempsey", "Jack Johnson", "2"],   # Question 4
+               ["How many Olympic medals has Michael Phelps won in his career?", "20", "25", "28", "30", "3"],   # Question 5
+               ["What is the only number retired by the entire NHL?", "99", "66", "1", "00", "1"],   # Question 6
+               ["Which NFL team has won the most Super Bowls?", "Pittsburgh Steelers", "Dallas Cowboys", "New England Patriots", "Greenbay Packers", "1"],   # Question 7
+               ["Which country won the first World Cup in 1930?", "France", "Brazil", "Spain", "Uruguay", "4"],   # Question 8
+               ["Which of these famous runners is known as the fastest man alive?", "Michael Johnson", "Carl Lewis", "Roger Bannister", "Usain Bolt", "4"],   # Question 9
+               ["Which player has the most points scored in NBA history?", "Wilt Chamerlain", "Kobe Bryant", "Michael Jordan", "Kareem Abdul-Jabbar", "4"]]   # Question 10
+
+spanishExam = [["What does cocinar mean?", "To Clean", "Hug", "A Dog", "To Cook", "4"],   # Question 1
+               ["What does pintar mean?", "To Paint", "A school", "Music", "A Photo", "1"],   # Question 2
+               ["What does lavar el carro mean?", "Run really quick", "To wash the car", "Grab the camera", "I like cats", "2"],   # Question 3
+               ["What does el comedor mean?", "The dining room", "It's a car", "The stairs", "Lunch break", "1"],   # Question 4
+               ["What does alfombra mean?", "House", "Bike", "Carpet", "Plant", "3"],   # Question 5
+               ["What does ayuda mean?", "Help", "Tall", "Charger", "College", "1"],   # Question 6
+               ["What does el fin de semana mean?", "Weekend", "Today", "Yesterday", "Later", "1"],   # Question 7
+               ["What does la persona mean?", "Jeans", "The person", "Pink", "Desk", "2"],   # Question 8
+               ["What does manejar mean?", "Mother", "To drive", "Computer", "Boots", "2"],   # Question 9
+               ["What does peligroso mean?", "Lamp", "Movie", "Chips", "Dangerous", "4"]]   # Question 10
+
+englishExam = [["Which of the following is a synonym of 'Cold'?","Humid","Frigid","Hot","Emaciated","2"],  # Question 1
+            ["Which of the following is an antonym of 'Difficult'?","Hard","Bland","Easy","Colorful","3"],  # Question 2
+            ["Which of the following is an antonym of 'Silent'?","Quiet","Listen","Passive","Noisy","4"], # Question 3
+            ["'It was as dark as space' is an example of what?","Simile","Metaphor","Apositive Phrase","Hyperbole","1"],   # Question 4
+            ["Which of the following is an example of an onomatopoeia?","Whoosh","Dog","Encyclopedia","Jump","1"],  # Question 5
+            ["Which of the following is a proper noun?","Dog","Michael","Book","Dirty","2"],  # Question 6
+            ["Which of the following is an adjective?","Crash","Fork","Fearful","Quietly","3"],  # Question 7
+            ["Which of the following is the correct spelling for the word that means a proportion?","Rachio","Rashio","Ratio","Raccio","3"], # Questioin 8
+            ["What figure of speech would the phrase 'Jumbo Shrimp' be considered?","Hyperbole", "Anagram", "Simile", "Oxymoron", "4"], # Question 9
+            ["Giving personality or human characteristics to something nonhuman is called","Personification","Identity Theft","Deja Vu","Metaphor","1"]] # Question 10
+## GUI
+## Create a window
+
+window = Tk()
+window.title("LearnIt")
+
+
+## Create Frames
+
+topFrame = Frame(window)
+choiceFrame = Frame(window)
+livesFrame = Frame(window)
+examFrame = Frame(window)
+answerFrame = Frame(window)
+## Button Functions
+lives = [3]
+score = [0]
+tracker = [0]
+mOS = [0]
+output = [0]
+def mathButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 1
+        questionBox.configure(state='normal')
+        questionBox.insert(END, mathExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(mathExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0] = 100
+
+def sciButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 2
+        questionBox.configure(state='normal')
+        questionBox.insert(END, sciExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(sciExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0]=100
+
+def compSciButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 3
+        questionBox.configure(state='normal')
+        questionBox.insert(END, compSciExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(compSciExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0]=100
+
+def historyButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 4
+        questionBox.configure(state='normal')
+        questionBox.insert(END, historyExam[num][0]+"\n")
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(historyExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0]=100
+
+def officeButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 5
+        questionBox.configure(state='normal')
+        questionBox.insert(END, officeExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(officeExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0]=100
+
+def sportsButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 6
+        questionBox.configure(state='normal')
+        questionBox.insert(END, sportsExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(sportsExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0]=100
+
+def spanishButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 7
+        questionBox.configure(state='normal')
+        questionBox.insert(END, spanishExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(spanishExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0]=100
+
+def englishButton():
+    if(output[0]==0):
+        num = random.randint(0,9)
+        tracker[0] = num
+        mOS[0] = 8
+        questionBox.configure(state='normal')
+        questionBox.insert(END, englishExam[num][0]+"\n")
+        questionBox.configure(state='disabled')
+        for j in range(1,5): ## Display multiple choices randomly
+            questionBox.configure(state='normal')
+            questionBox.insert(END, str(j)+": "+str(englishExam[num][j]+"\n"))
+            questionBox.configure(state='disabled')
+        output[0] = 100
+
+def randomButton():
+    testNum = random.randint(0,7)
+    if(testNum==0):
+        mathButton()
+    if(testNum==1):
+        sciButton()
+    if(testNum==2):
+        compSciButton()
+    if(testNum==3):
+        historyButton()
+    if(testNum==4):
+        officeButton()
+    if (testNum==5):
+        sportsButton()
+    if (testNum==6):
+        spanishButton()
+    if (testNum==7):
+        englishButton()
+       
+def submitButton():
+    answer = questionEntry.get()
+    cNum=100
+    if(mOS[0]==1):
+        cNum = mathExam[tracker[0]][5]
+    if(mOS[0]==2):
+        cNum = sciExam[tracker[0]][5]
+    if(mOS[0]==3):
+        cNum = compSciExam[tracker[0]][5]
+    if(mOS[0]==4):
+        cNum = historyExam[tracker[0]][5]
+    if(mOS[0]==5):
+        cNum = officeExam[tracker[0]][5]
+    if(mOS[0]==6):
+        cNum = sportsExam[tracker[0]][5]
+    if(mOS[0]==7):
+        cNum = spanishExam[tracker[0]][5]
+    if(mOS[0]==8):
+        cNum = englishExam[tracker[0]][5]
+    if(answer != "1" and answer != "2" and answer != "3" and answer != "4"):
+        questionEntry.delete(0)
+    elif(answer != cNum):
+        lives[0] = lives[0] - 1
+        livesBox.delete('1.0',END)
+        livesBox.insert(END, str(lives[0]))
+        questionBox.configure(state='normal')
+        questionBox.delete('1.0', END)
+        questionEntry.delete(0)
+        output[0]=0
+    if(answer==cNum):
+        score[0] = score[0] + 1
+        scoreBox.delete('1.0', END)
+        scoreBox.insert(END, str(score[0]))
+        questionBox.configure(state='normal')
+        questionBox.delete('1.0', END)
+        questionEntry.delete(0)
+        output[0]=0
+        
+    ## RESTART IF LIVES HIT 0
+    if(lives[0]==0 and output[0]!=200):
+        questionBox.insert(END, "YOU LOSE!!!"+"\n"+"Final Score: "+str(score[0]))
+        output[0]=200
+
+def restartButton():
+    lives[0] = 3
+    score[0] = 0
+    livesBox.delete('1.0',END)
+    livesBox.insert(END, str(lives[0]))
+    scoreBox.delete('1.0', END)
+    scoreBox.insert(END, str(score[0]))
+    questionBox.configure(state='normal')
+    questionBox.delete('1.0', END)
+    output[0]=0
+    
+## Create Labels
+
+labelOne = Label(topFrame, text="The test will continue infinitely or until you get 3 questions wrong."+"\n"+"Select a subject button and it will display a random question."+"\n"+"To answer enter the corresponding number 1-4 and hit submit.")
+livesLabel = Label(livesFrame, text="Lives Remaining: ")
+scoreLabel = Label(livesFrame, text="Current Score: ")
+answerLabel = Label(answerFrame, text="Enter 1, 2, 3 or 4: ")
+
+## Create Buttons
+buttonMath = Button(choiceFrame, text="Math", fg="red", command=mathButton)
+buttonSci = Button(choiceFrame, text="Science", fg="blue", bg="yellow", command =sciButton)
+buttonComp = Button(choiceFrame, text="Computer Science", fg="green", command=compSciButton)
+buttonHistory = Button(choiceFrame, text="Social Studies", fg="cyan", bg="black", command=historyButton)
+buttonOffice = Button(choiceFrame, text="Office Trivia", fg="magenta", command=officeButton)
+buttonSports = Button(choiceFrame, text="Sports Trivia", fg="purple", command=sportsButton)
+buttonSpanish = Button(choiceFrame, text="Spanish", fg="Green", command=spanishButton)
+buttonEnglish = Button(choiceFrame, text="English", fg="orange", command=englishButton)
+buttonRandom = Button(choiceFrame, text="Random", fg="yellow", bg="black", command=randomButton)
+buttonSubmit = Button(examFrame, text="Submit", fg="black", command=submitButton)
+buttonRestart = Button(examFrame, text="Restart", fg="black", command=restartButton)
+
+## Display exam
+
+questionBox = Text(examFrame, width=75, height=8)
+livesBox = Text(livesFrame, width=4, height=1)
+livesBox.insert(END, "3")
+scoreBox = Text(livesFrame, width=4, height=1)
+scoreBox.insert(END,"0")
+questionEntry = Entry(answerFrame)
+
+
+# Pack everything
+buttonMath.grid(row=0,column=0)
+buttonSci.grid(row = 0, column=1)
+buttonComp.grid(row=0,column=2)
+buttonHistory.grid(row=0,column=3)
+buttonOffice.grid(row=0, column=4)
+buttonSports.grid(row=0, column=5)
+buttonSpanish.grid(row=0, column=6)
+buttonEnglish.grid(row=0, column=7)
+buttonRandom.grid(row=0, column=8)
+topFrame.pack()
+choiceFrame.pack()
+livesFrame.pack()
+examFrame.pack()
+answerFrame.pack()
+labelOne.pack()
+questionBox.grid(row = 0, column = 1)
+answerLabel.grid(row=0)
+questionEntry.grid(row = 0, column=1)
+buttonSubmit.grid(row=1,column =0)
+buttonRestart.grid(row=1, column=2)
+livesBox.grid(row=0, column=1)
+livesLabel.grid(row=0)
+scoreBox.grid(row=0, column=3)
+scoreLabel.grid(row=0, column=2)
+window.mainloop()
+
+
+
